@@ -13,7 +13,7 @@ public class Leaderboard {
     public Map<String, Integer> driverResults() {
         Map<String, Integer> results = new HashMap<String, Integer>();
         for (Race race: this.races) {
-            for (Driver driver: race.getResults()) {
+            for (IDriver driver: race.getResults()) {
                 String driverName = race.getDriverName(driver);
                 int points = race.getPoints(driver);
                 if (results.containsKey(driverName)) {

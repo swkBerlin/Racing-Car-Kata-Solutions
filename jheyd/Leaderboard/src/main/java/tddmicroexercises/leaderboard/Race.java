@@ -9,36 +9,33 @@ public class Race {
 
     private static Integer[] points = new Integer[]{25, 18, 15};
 
-    private final List<Driver> results;
+    private final List<IDriver> results;
     private final String name;
-    private final Map<Driver, String> driverNames;
+    private final Map<IDriver, String> driverNames;
 
-    public Race(String name, Driver... drivers) {
+    public Race(String name, IDriver... drivers) {
         this.name = name;
         this.results = Arrays.asList(drivers);
-        this.driverNames = new HashMap<Driver, String>();
-        for (Driver driver: results) {
+        this.driverNames = new HashMap<IDriver, String>();
+        for (IDriver driver: results) {
             String driverName = driver.getName();
-            if (driver instanceof SelfDrivingCar) {
-                driverName = "Self Driving Car - " + driver.getCountry() + " (" + ((SelfDrivingCar)driver).getAlgorithmVersion() + ")";
-            }
             this.driverNames.put(driver, driverName);
         }
     }
 
-    public int position(Driver driver) {
+    public int position(IDriver driver) {
         return this.results.indexOf(driver);
     }
 
-    public int getPoints(Driver driver) {
+    public int getPoints(IDriver driver) {
         return Race.points[position(driver)];
     }
 
-    public List<Driver> getResults() {
+    public List<IDriver> getResults() {
         return results;
     }
 
-    public String getDriverName(Driver driver) {
+    public String getDriverName(IDriver driver) {
         return this.driverNames.get(driver);
     }
 }

@@ -1,6 +1,6 @@
 package tddmicroexercises.leaderboard;
 
-public class SelfDrivingCar extends Driver {
+public class SelfDrivingCar implements IDriver {
 
     private final String company;
 
@@ -15,8 +15,12 @@ public class SelfDrivingCar extends Driver {
     private String algorithmVersion;
 
     public SelfDrivingCar(String algorithmVersion, String company) {
-        super(algorithmVersion, company);
         this.algorithmVersion = algorithmVersion;
         this.company = company;
     }
+
+	@Override
+	public String getName() {
+        return "Self Driving Car - " + company + " (" + getAlgorithmVersion() + ")";
+	}
 }
